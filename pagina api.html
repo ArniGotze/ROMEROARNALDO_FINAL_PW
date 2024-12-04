@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Interacción con APIs</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a la Página de Interacción con APIs</h1>
+
+        <div class="login">
+            <input type="text" id="username" placeholder="Usuario (USER)">
+            <input type="password" id="password" placeholder="Contraseña (PASS)">
+            <button onclick="login()">Iniciar Sesión</button>
+        </div>
+
+        <div class="api-buttons">
+            <button onclick="sendEmail()">Enviar Correo</button>
+            <button onclick="getRandomImage()">Obtener Imagen</button>
+            <button onclick="getCatImage()">Obtener Imagen de Gato</button>
+        </div>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function sendEmail() {
+            const emailTo = prompt("Ingrese el correo del destinatario:");
+            const emailSubject = prompt("Ingrese el asunto del correo:");
+            const emailText = prompt("Ingrese el mensaje del correo:");
+
+            fetch('http://localhost:3000/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    to: emailTo,
+                    subject: emailSubject,
+                    text: emailText
+                })
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('output').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('output').innerHTML = 'Error: ' + error;
+            });
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Contacto</h1>
+        <form id="contactForm" onsubmit="return enviarFormulario(event)">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="calificacion">Calificación:</label>
+            <input type="number" id="calificacion" name="calificacion" min="1" max="10" required>
+
+            <label for="mensaje">Mensaje de Observación:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+            <label for="remitente">Tu Nombre:</label>
+            <input type="text" id="remitente" name="remitente" required>
+
+            <div class="buttons">
+                <button type="submit">Enviar</button>
+                <button type="button" onclick="limpiarFormulario()">Limpiar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function enviarFormulario(event) {
+            event.preventDefault(); // Evitar el envío real del formulario
+            // Aquí puedes implementar la lógica para enviar el formulario a un correo
+            alert("Mensaje enviado con éxito!");
+            return false; // Para que no se recargue la página
+        }
+
+        function limpiarFormulario() {
+            document.getElementById("contactForm").reset();
+        }
+    </script>
+</body>
+</html>

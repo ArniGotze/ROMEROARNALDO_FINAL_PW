@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Página Principal</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a Mi Página Web</h1>
+        <p>Por favor, ingresa tu nombre:</p>
+        <input type="text" id="nombreInput" placeholder="Tu nombre aquí">
+        <button id="bienvenidaBtn">Enviar</button>
+
+        <div id="mensajeBienvenida" class="hidden"></div>
+
+        <h2>Secciones de la Página:</h2>
+        <ul>
+            <li><a href="pagina api.html">Sección 1</a></li> <!-- Cambiado a api_page.html -->
+            <li><a href="pagina de incio.html">Sección 2</a></li>
+            <li><a href="formulario.html">Sección 3</a></li>
+            <li><a href="pagina de operaciones.html">Sección 4</a></li>
+        </ul>
+        </ul>
+    </div>
+
+    <script>
+        const btn = document.getElementById('bienvenidaBtn');
+        const input = document.getElementById('nombreInput');
+        const mensajeBienvenida = document.getElementById('mensajeBienvenida');
+
+        btn.addEventListener('click', () => {
+            const nombre = input.value.trim();
+            if (nombre) {
+                mensajeBienvenida.textContent = `¡Bienvenido, ${nombre}!`;
+                mensajeBienvenida.classList.remove('hidden');
+            } else {
+                alert('Por favor, ingresa un nombre.');
+            }
+        });
+    </script>
+</body>
+</html>
